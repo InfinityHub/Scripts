@@ -197,7 +197,7 @@ Tabs.Stands:AddButton({
 local AutoBlockToggle = Tabs.Combat:AddToggle("AutoBlockValue", {Title = "Auto Block", Default = false })
 AutoBlockToggle:OnChanged(function(bool)
     AutoBlockBool = bool
-    while AutoBlockBool do task.wait()
+    while AutoBlockBool do task.wait(.5)
         local args = {
             [1] = "Alternate",
             [2] = "Block"
@@ -208,7 +208,7 @@ end)
 local AntiTsToggle = Tabs.Combat:AddToggle("AntiTsValue", {Title = "Anti Time Stop", Default = false })
 AntiTsToggle:OnChanged(function(bool)
     AntiTsBool = bool
-    while AntiTsBool do task.wait()
+    while AntiTsBool do task.wait(.5)
         for i,v in pairs(game:GetService("Lighting"):GetChildren()) do
             if v:IsA("BoolValue") and v.Name == "TS" then
                 if ts.Value == true then
@@ -222,7 +222,7 @@ end)
 local AntiDiscToggle = Tabs.Combat:AddToggle("AntiDiscValue", {Title = "Anti Disc", Default = false })
 AntiDiscToggle:OnChanged(function(bool)
     AntiDiscBool = bool
-    while AntiDiscBool do task.wait()
+    while AntiDiscBool do task.wait(.5)
         for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
             if v:IsA("BoolValue") and v.Name == "Disabled" then
                 if v.Value == true then wait(.25)
