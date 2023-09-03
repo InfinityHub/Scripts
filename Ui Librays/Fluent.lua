@@ -5,11 +5,11 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 local Window = Fluent:CreateWindow({
     Title = "Fluent " .. Fluent.Version,
     SubTitle = "by dawid",
-    TabWidth = 160,
+    TabWidth = 100,
     Size = UDim2.fromOffset(400,400),
-    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Darker",
-    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+    MinimizeKey = Enum.KeyCode.J -- Used when theres no MinimizeKeybind
 })
 
 --Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
