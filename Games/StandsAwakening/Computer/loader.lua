@@ -271,7 +271,7 @@ ShadowDioBox:AddToggle('STWFS', {
     Callback = function(state)
         settings = state
         if settings then
-            while wait() and settings do
+            while wait(.5) and settings do
 				-- Head
 				local args = {
 				    [1] = game:GetService("Players").LocalPlayer.Character.Stand.FakeHead,
@@ -489,7 +489,7 @@ PlayerOptionsBox:AddToggle('AB', {
     Callback = function(state)
         settings = state
         if settings then
-            while wait() and settings do
+            while wait(.5) and settings do
 	    		local args = {
 					[1] = "Alternate",
 					[2] = "Block"
@@ -507,7 +507,7 @@ PlayerOptionsBox:AddToggle('ATS', {
     Callback = function(state)
         settings = state
         if settings then
-		while wait() and settings do
+		while wait(.5) and settings do
 	            for i,v in pairs(game:GetService("Lighting"):GetChildren()) do
 	            	if v:IsA("BoolValue") and v.Name == "TS" then
 	            		if ts.Value == true then
@@ -528,7 +528,7 @@ PlayerOptionsBox:AddToggle('AD', {
     Callback = function(state)
         settings = state
         if settings then
-            while wait() and settings do
+            while wait(.5) and settings do
                 for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
                     if v:IsA("BoolValue") and v.Name == "Disabled" then
                         if v.Value == true then wait(.25)
@@ -548,7 +548,7 @@ PlayerOptionsBox:AddToggle('GM', {
     Callback = function(state)
         settings = state
         if settings then
-            while wait() and settings do
+            while wait(.5) and settings do
                 for _, v in pairs(plr.Backpack:GetChildren()) do
                     if v:IsA("LocalScript") and v.Name ~= "ResetLighting" then
                         v:Destroy()
