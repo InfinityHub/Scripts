@@ -189,13 +189,22 @@ Tabs.Player:AddButton({
     end
 })
 Tabs.Player:AddButton({
-    Title = "Infinite Beli",
+    Title = "Infinite Geli",
     Description = "",
     Callback = function()
-        local number_1 = 999999999999999999
+        local number_1 = 1000000000000000000
         local string_1 = "Code2";
         local Target = game:GetService("ReplicatedStorage").EnterCode;
         Target:FireServer(number_1, string_1);
+    end
+})
+Tabs.Player:AddButton({
+    Title = "Infinite Diamonds",
+    Description = "",
+    Callback = function()
+		local ohNumber1 = 1000000000000000000
+		local ohString2 = "Code17"
+		game:GetService("ReplicatedStorage").BonusFolderFX.DiamondCodes:FireServer(ohNumber1, ohString2)
     end
 })
 
