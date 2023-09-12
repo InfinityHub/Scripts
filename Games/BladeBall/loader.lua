@@ -548,3 +548,7 @@ AutoCaseToggle:OnChanged(function(bool)
         end
     end
 end)
+
+
+
+Window:SelectTab(1)
