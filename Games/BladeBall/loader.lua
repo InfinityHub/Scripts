@@ -241,7 +241,7 @@ Tabs.Main:AddButton({
 
 
 Tabs.User:AddButton({
-    Title = "Auto Parry ",
+    Title = "Auto Parry (Recommended)",
     Description = "",
     Callback = function()
         local player = game.Players.LocalPlayer
@@ -307,7 +307,7 @@ Tabs.User:AddButton({
     end
 })
 Tabs.User:AddButton({
-    Title = "Auto Parry Best (Red Line)",
+    Title = "Auto Parry (Red Line)",
     Description = "Keybind: X",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/main/Circle"))()
