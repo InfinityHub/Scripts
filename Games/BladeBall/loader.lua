@@ -69,7 +69,7 @@ local Window = Fluent:CreateWindow({
     TabWidth = 120,
     Size = UDim2.fromOffset(600, 500),
     Acrylic = false,
-    Theme = "Amethyst",
+    Theme = "Aqua",
     MinimizeKey = Enum.KeyCode.J
 })
 local Tabs = {
@@ -241,7 +241,7 @@ Tabs.Main:AddButton({
 
 
 Tabs.User:AddButton({
-    Title = "Auto Parry (Recommended)",
+    Title = "Auto Parry ",
     Description = "",
     Callback = function()
         local player = game.Players.LocalPlayer
@@ -307,7 +307,7 @@ Tabs.User:AddButton({
     end
 })
 Tabs.User:AddButton({
-    Title = "Auto Parry (Red Line)",
+    Title = "Auto Parry Best (Red Line)",
     Description = "Keybind: X",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/main/Circle"))()
