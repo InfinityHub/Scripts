@@ -172,6 +172,13 @@ Tabs.Main:AddButton({
     Title = "Get Rapture",
     Description = "",
     Callback = function()
+        GetAnyAbility('Pull')
+    end
+})
+Tabs.Main:AddButton({
+    Title = "Get Rapture",
+    Description = "",
+    Callback = function()
         GetAnyAbility('Rapture')
     end
 })
@@ -273,6 +280,13 @@ Tabs.Main:AddButton({
     Description = "",
     Callback = function()
         upgrades:WaitForChild("Telekinesis").Value = 999999999999999999
+    end
+})
+Tabs.Main:AddButton({
+    Title = "Inf Rapture",
+    Description = "",
+    Callback = function()
+        upgrades:WaitForChild("Pull").Value = 999999999999999999
     end
 })
 Tabs.Main:AddButton({
