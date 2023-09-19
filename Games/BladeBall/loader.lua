@@ -11,6 +11,15 @@ local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
 local abilitiesFolder = character:WaitForChild("Abilities")
 local upgrades = localPlayer.Upgrades
 localPlayer.CharacterAdded:Connect(onCharacterAdded)
+function GetSkills()
+    local skillsName = {}
+    for i, v in pairs(game.Players.LocalPlayer.Character.Abilities:GetChildren()) do
+        if (v:IsA('LocalScript') and v.Name ~= 'Dash') then
+            table.insert(skillsName, v.Name)
+        end
+    end
+    return skillsName
+end
 local TruValue = Instance.new("StringValue")
 if workspace:FindFirstChild("AbilityThingyk1212") then
     workspace:FindFirstChild("AbilityThingyk1212"):Remove()
@@ -64,7 +73,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({
-    Title = 'Infinity Hub (UPDATE) | 1.5 | '..MarketplaceService:GetProductInfo(game.PlaceId).Name,
+    Title = 'Infinity Hub (UPDATE) | 1.8 | '..MarketplaceService:GetProductInfo(game.PlaceId).Name,
     SubTitle = "by InfinityMercury",
     TabWidth = 120,
     Size = UDim2.fromOffset(600, 500),
@@ -166,6 +175,41 @@ Tabs.Main:AddButton({
         GetAnyAbility('Rapture')
     end
 })
+Tabs.Main:AddButton({
+    Title = "Get Phase Bypass",
+    Description = "",
+    Callback = function()
+        GetAnyAbility('Phase Bypass')
+    end
+})
+Tabs.Main:AddSection('')
+Tabs.Main:AddSection('- Get Skills 2')
+Tabs.Main:AddParagraph({
+    Title = "How to use",
+    Content = "Tto be able to use get skill version two. When you select a skill activate the toggle and you will get it, but when the player wants to deactivate it deactivate the toggle with the skill the player selected then select the other skill and activate it again."
+})
+local Dropdown = Tabs.Main:AddDropdown("SkillsTwoDropdown", {
+    Title = "Select Skill: ",
+    Values = GetSkills(),
+    Multi = false,
+    Default = 1,
+})
+local AutoSkillsTwoToggle = Tabs.Main:AddToggle("MyToggle", {Title = "Get Skill", Default = false })
+AutoSkillsTwoToggle:OnChanged(function(bool)
+    SkillsTwo = bool
+    if SkillsTwo then
+        while SkillsTwo do task.wait()
+            -- delete dash
+            game.Players.LocalPlayer.Character.Abilities.Dash.Enabled=false
+            -- get skill
+            game.Players.LocalPlayer.Character.Abilities[Options.SkillsTwoDropdown.Value].Enabled=true
+        end
+    else
+        wait(.25)
+        game.Players.LocalPlayer.Character.Abilities[Options.SkillsTwoDropdown.Value].Enabled=false wait(.35)
+        game.Players.LocalPlayer.Character.Abilities.Dash.Enabled=true
+    end
+end)
 Tabs.Main:AddSection('')
 Tabs.Main:AddSection('- Skill Settings')
 Tabs.Main:AddButton({
@@ -236,6 +280,13 @@ Tabs.Main:AddButton({
     Description = "",
     Callback = function()
         upgrades:WaitForChild("Rapture").Value = 999999999999999999
+    end
+})
+Tabs.Main:AddButton({
+    Title = "Inf Phase Bypass",
+    Description = "",
+    Callback = function()
+        upgrades:WaitForChild("Phase Bypass").Value = 999999999999999999
     end
 })
 
@@ -511,13 +562,11 @@ Tabs.Server:AddButton({
     Description = "",
     Callback = function()
         while true do task.wait()
-            for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
-                local args = {
+            local args = {
                     [1] = true,
                     [2] = "Empyrean"
-                }
-                game:GetService("ReplicatedStorage").Remotes.CustomEmote:FireServer(unpack(args))
-            end
+            }
+            game:GetService("ReplicatedStorage").Remotes.CustomEmote:FireServer(unpack(args))
         end
     end
 })
