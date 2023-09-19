@@ -169,6 +169,13 @@ Tabs.Main:AddButton({
     end
 })
 Tabs.Main:AddButton({
+    Title = "Get Raging Deflection",
+    Description = "",
+    Callback = function()
+        GetAnyAbility('TRaging Deflection')
+    end
+})
+Tabs.Main:AddButton({
     Title = "Get Pull",
     Description = "",
     Callback = function()
