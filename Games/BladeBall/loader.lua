@@ -169,7 +169,7 @@ Tabs.Main:AddButton({
     end
 })
 Tabs.Main:AddButton({
-    Title = "Get Rapture",
+    Title = "Get Pull",
     Description = "",
     Callback = function()
         GetAnyAbility('Pull')
@@ -283,7 +283,7 @@ Tabs.Main:AddButton({
     end
 })
 Tabs.Main:AddButton({
-    Title = "Inf Rapture",
+    Title = "Inf Pull",
     Description = "",
     Callback = function()
         upgrades:WaitForChild("Pull").Value = 999999999999999999
