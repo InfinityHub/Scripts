@@ -535,7 +535,7 @@ Window:AddCommand('DisableCharacterFunctions', {}, 'Disable character functions'
             v.Enabled = false
         end
     end
-    repeat task.wait() game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30 until game.Players.LocalPlayer.Character.Humanoid.Health == 0
+    repeat task.wait(.35) game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30 until game.Players.LocalPlayer.Character.Humanoid.Health == 0
 end)
 Window:AddCommand('TakeDamage', {'true / false'}, 'Starts an automatic farm to farm take damage to complete tasks.', function(Arguments)
     method = Arguments[1]
