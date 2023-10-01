@@ -1,4 +1,4 @@
---// Library
+--// Variables
 local plrName = game.Players.LocalPlayer.Name
 function GetPlayers()
     for _, v in pairs(workspace.Enemies:GetChildren()) do
