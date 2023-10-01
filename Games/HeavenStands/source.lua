@@ -522,6 +522,8 @@ Window:AddCommand('InstaKill', {'Mob Name'}, 'Insta kill mob selected', function
     local ohEnumItem1 = Enum.UserInputType.MouseButton1
     local ohBoolean2 = true
     game:GetService("ReplicatedStorage").Remotes.Input:FireServer(ohEnumItem1, ohBoolean2)
+	local ohString1 = "MouseButton1"
+	game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
     wait(.5)
     workspace.Enemies[Arguments[1]].Head:Destroy()
 end)
@@ -535,7 +537,7 @@ Window:AddCommand('DisableCharacterFunctions', {}, 'Disable character functions'
             v.Enabled = false
         end
     end
-    repeat task.wait(.35) game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30 until game.Players.LocalPlayer.Character.Humanoid.Health == 0
+    repeat task.wait() game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30 until game.Players.LocalPlayer.Character.Humanoid.Health == 0
 end)
 Window:AddCommand('TakeDamage', {'true / false'}, 'Starts an automatic farm to farm take damage to complete tasks.', function(Arguments)
     method = Arguments[1]
@@ -575,6 +577,8 @@ Window:AddCommand('DealDamage', {'true / false / start'}, 'Starts an automatic f
             local ohEnumItem1 = Enum.UserInputType.MouseButton1
             local ohBoolean2 = true
             game:GetService("ReplicatedStorage").Remotes.Input:FireServer(ohEnumItem1, ohBoolean2)
+			local ohString1 = "MouseButton1"
+			game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
         until method == 'false'
     end
 end)
