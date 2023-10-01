@@ -460,6 +460,13 @@ function isNumber(str)
 		return true
 	end
 end
+function Ability()
+	for _, v in pairs(game.Players.LocalPlayer.Data:GetChildren()) do
+		if (v:IsA('StringValue') and v.Name == 'Ability') then
+			return v.Value
+		end
+	end
+end
 
 
 
@@ -519,11 +526,14 @@ Window:AddCommand('InstaKill', {'Mob Name'}, 'Insta kill mob selected', function
             v:Destroy()
         end
     end
-    local ohEnumItem1 = Enum.UserInputType.MouseButton1
-    local ohBoolean2 = true
-    game:GetService("ReplicatedStorage").Remotes.Input:FireServer(ohEnumItem1, ohBoolean2)
-	local ohString1 = "MouseButton1"
-	game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
+	if (Ability() == 'Standless') then
+		local ohString1 = "MouseButton1"
+		game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
+	else
+		local ohEnumItem1 = Enum.UserInputType.MouseButton1
+		local ohBoolean2 = true
+		game:GetService("ReplicatedStorage").Remotes.Input:FireServer(ohEnumItem1, ohBoolean2)
+	end
     wait(.5)
     workspace.Enemies[Arguments[1]].Head:Destroy()
 end)
@@ -574,11 +584,14 @@ Window:AddCommand('DealDamage', {'true / false / start'}, 'Starts an automatic f
     end
     if (method == 'start') then
         repeat task.wait()
-            local ohEnumItem1 = Enum.UserInputType.MouseButton1
-            local ohBoolean2 = true
-            game:GetService("ReplicatedStorage").Remotes.Input:FireServer(ohEnumItem1, ohBoolean2)
-			local ohString1 = "MouseButton1"
-			game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
+			if (Ability() == 'Standless') then
+				local ohString1 = "MouseButton1"
+				game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
+			else
+				local ohEnumItem1 = Enum.UserInputType.MouseButton1
+				local ohBoolean2 = true
+				game:GetService("ReplicatedStorage").Remotes.Input:FireServer(ohEnumItem1, ohBoolean2)
+			end
         until method == 'false'
     end
 end)
