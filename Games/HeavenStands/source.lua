@@ -470,6 +470,7 @@ end
 
 
 
+
 --// Library
 local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/VisualRoblox/Roblox/main/UI-Libraries/Visual%20Command%20UI%20Library/Source.lua', true))()
 local Window = Library:CreateWindow({
@@ -526,13 +527,13 @@ Window:AddCommand('InstaKill', {'Mob Name'}, 'Insta kill mob selected', function
             v:Destroy()
         end
     end
-	if (Ability() == 'Standless') then
-		local ohString1 = "MouseButton1"
-		game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
-	else
+	if (Ability() == 'Marisa Kirisame' or 'Itadori' or 'Yuta' or 'Gojo' or 'Gojo (Young)' or 'Sukuna') then
 		local ohEnumItem1 = Enum.UserInputType.MouseButton1
 		local ohBoolean2 = true
 		game:GetService("ReplicatedStorage").Remotes.Input:FireServer(ohEnumItem1, ohBoolean2)
+	else
+		local ohString1 = "MouseButton1"
+		game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
 	end
     wait(.5)
     workspace.Enemies[Arguments[1]].Head:Destroy()
@@ -584,13 +585,13 @@ Window:AddCommand('DealDamage', {'true / false / start'}, 'Starts an automatic f
     end
     if (method == 'start') then
         repeat task.wait()
-			if (Ability() == 'Standless') then
-				local ohString1 = "MouseButton1"
-				game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
-			else
+			if (Ability() == 'Marisa Kirisame' or 'Itadori' or 'Yuta' or 'Gojo' or 'Gojo (Young)' or 'Sukuna') then
 				local ohEnumItem1 = Enum.UserInputType.MouseButton1
 				local ohBoolean2 = true
 				game:GetService("ReplicatedStorage").Remotes.Input:FireServer(ohEnumItem1, ohBoolean2)
+			else
+				local ohString1 = "MouseButton1"
+				game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
 			end
         until method == 'false'
     end
