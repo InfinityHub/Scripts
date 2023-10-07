@@ -124,13 +124,6 @@ farmingTab:CreateLargeInput({
 	end,
 })
 farmingTab:CreateToggle({
-    Name = "Ability",
-    Callback = function(bool)
-        getgenv().UseAbility = bool
-		print(getgenv().UseAbility)
-    end,
-})
-farmingTab:CreateToggle({
     Name = "Start Farming Player",
     Callback = function(bool)
 		farmPlayer = bool
@@ -139,13 +132,13 @@ farmingTab:CreateToggle({
 				if (v.Name ~= game:GetService('Players').LocalPlayer.Name) then
 					if (v.Name == tostring(playerName)) then
 						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,2.2)
-						if getgenv().UseAbility then
-							local ohString1 = "MouseButton1"			
-							game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
-
+						if (Ability() == 'Marisa Kirisame' or 'Itadori' or 'Yuta' or 'Toji' or 'Sukuna') then
 							local ohEnumItem1 = Enum.UserInputType.MouseButton1
 							local ohBoolean2 = true
 							game:GetService("ReplicatedStorage").Remotes.Input:FireServer(ohEnumItem1, ohBoolean2)
+						else
+							local ohString1 = "MouseButton1"
+							game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
 						end
 					end
 				end
@@ -197,12 +190,14 @@ for _, v in next, bossesName do
 					v:Destroy()
 				end
 			end
-			local ohString1 = "MouseButton1"
-			game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
-
-			local ohEnumItem1 = Enum.UserInputType.MouseButton1
-			local ohBoolean2 = true
-			game:GetService("ReplicatedStorage").Remotes.Input:FireServer(ohEnumItem1, ohBoolean2)
+			if (Ability() == 'Marisa Kirisame' or 'Itadori' or 'Yuta' or 'Toji' or 'Sukuna') then
+				local ohEnumItem1 = Enum.UserInputType.MouseButton1
+				local ohBoolean2 = true
+				game:GetService("ReplicatedStorage").Remotes.Input:FireServer(ohEnumItem1, ohBoolean2)
+			else
+				local ohString1 = "MouseButton1"
+				game:GetService("ReplicatedStorage").Remote_Events.Input_Remote:InvokeServer(ohString1)
+			end
 			wait(.5)
 			workspace.Enemies[v].Head:Destroy()
 		end,
