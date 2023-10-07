@@ -229,6 +229,21 @@ end
 
 
 playerTab:CreateSection('[ Player Options ]')
+playerTab:CreateToggle({
+	Name = "Disable Character Functions",
+	Callback = function(bool)
+		dcf = bool
+		while dcf do task.wait()
+			local findScript = {'CharacterFunctions', 'Character_Functions'}
+			for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+				if (v:IsA('LocalScript') and table.find(findScript, v.Name)) then
+					v.Enabled = false
+				end
+			end
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
+		end
+	end,
+})
 playerTab:CreateButton({
 	Name = 'Kill Yourself',
 	Callback = function()
