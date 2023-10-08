@@ -255,30 +255,6 @@ questTab:CreateToggle({
 
 
 survivalTab:CreateSection("[ Survival Options ]")
-survivalTab:CreateButton({
-    Name = "Refill",
-    Callback = function()
-        for _, v in pairs(workspace.House.GasCans:GetChildren()) do
-            if (v:IsA('Model') and v.Name == 'GasCan') then
-                for _, x in pairs(v:GetDescendants()) do
-                    if (x:IsA('ProximityPrompt')) then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = x.Parent.CFrame
-                        fireproximityprompt(x) wait(.2)
-                        for _, Tool in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                            if Tool:IsA('Tool') and Tool.Name == 'gas can' then
-                                game.Players.LocalPlayer.Character.Humanoid:EquipTool(Tool)
-                            end
-                        end wait(.2)
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-157.453751, 5.25002289, 48.3504066, 0.0231024306, 1.21808286e-09, 0.99973309, -4.12855394e-09, 1, -1.12300291e-09, -0.99973309, -4.10150802e-09, 0.0231024306) wait(.2)
-                        fireproximityprompt(workspace.House.Generator.Button.ProximityPrompt) wait(.2)
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-127.453239, 18.859787, 41.2493134, 0.0207649581, 3.62811114e-08, 0.99978441, -6.9179471e-08, 1, -3.48521176e-08, -0.99978441, -6.84408477e-08, 0.0207649581)
-                        return
-                    end
-                end
-            end
-        end
-    end,
-})
 survivalTab:CreateToggle({
     Name = "Auto Sleep",
     Callback = function(bool)
