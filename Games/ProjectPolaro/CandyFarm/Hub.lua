@@ -110,7 +110,7 @@ AutoReloadGuiToggle:bindToEvent('onToggle', function(bool)
 end)
 AutoSaveToggle:bindToEvent('onToggle', function(bool)
     autoSave = bool
-    while autoSave do task.wait()
+    while autoSave do task.wait(.5)
         game:GetService("ReplicatedStorage").REvents.Internal.Save:InvokeServer()
     end
 end)
