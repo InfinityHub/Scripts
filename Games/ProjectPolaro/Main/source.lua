@@ -36,7 +36,7 @@ queue_on_teleport[[
 -- Libray Settings
 local ArrayField = loadstring(game:HttpGet('https://raw.githubusercontent.com/InfinityMercury/UiLibray/main/ArrayField/source.lua'))()
 local Window = ArrayField:CreateWindow({
-    Name = "Infinity Hub | version 1.2 | Project Polaro",
+    Name = "Infinity Hub | version 1.8 | Project Polaro",
     LoadingTitle = "Infinity Hub",
     LoadingSubtitle = "by InfinityMercury",
     ConfigurationSaving = {
@@ -71,14 +71,22 @@ local Window = ArrayField:CreateWindow({
 
 
 -- Tabs Settings
+local welcomeTab = Window:CreateTab("Welcome", 4483362458)
 local movesTab = Window:CreateTab("Moves", 4483362458)
 local candyTab = Window:CreateTab("Candy", 4483362458)
 local battleTab = Window:CreateTab("In Battle", 4483362458)
+local moneyTab = Window:CreateTab("Money", 4483362458)
 local teleportTab = Window:CreateTab("Teleport", 4483362458)
 
 
 
 -- Code
+local welcomeSection = welcomeTab:CreateSection("[ Welcome! ]", false)
+local Paragraph = welcomeTab:CreateParagraph({Title = "Welcome to Infinity Hub "..game.Players.LocalPlayer.Name, Content = "Have fun"}, welcomeSection)
+local Paragraph = welcomeTab:CreateParagraph({Title = "Discord Server", Content = "In dev..."}, welcomeSection)
+local Label = welcomeTab:CreateLabel("Hub Keybind: K", welcomeSection)
+
+
 local Section = movesTab:CreateSection("[ Move Replace Menu ]", false)
 local Input = movesTab:CreateInput({
     Name = "Pokemon Name",
@@ -121,14 +129,6 @@ local Button = movesTab:CreateButton({
         local ohInstance2 = game:GetService("Players").LocalPlayer.PokemonParty.Necrozma.Moves[getgenv().MoveToReplace]
         local ohString3 = getgenv().MoveToAdd
         game:GetService("ReplicatedStorage").REvents.Pokemon.TMLearn:InvokeServer(ohInstance1, ohInstance2, ohString3)
-    end,
-})
-local Section = movesTab:CreateSection("[ Misc ]", false)
-local Button = movesTab:CreateButton({
-    Name = "Refresh Dropdown",
-    Interact = 'Click',
-    Callback = function()
-        PokePartDropdown:Refresh(PokePart())
     end,
 })
 
@@ -246,6 +246,31 @@ local Button = battleTab:CreateButton({
 })
 
 
+local Section = moneyTab:CreateSection("[ Inf Money ]", false)
+local Button = moneyTab:CreateButton({
+    Name = "Start Generate Money",
+    Interact = 'Click',
+    Callback = function()
+        repeat task.wait()
+            local a1 = 'Gary'
+            game:GetService("ReplicatedStorage").REvents.Internal.jxbf:InvokeServer(a1)
+        until game.Players.LocalPlayer.Character.Humanoid.Health == 9e99
+    end,
+})
+local Toggle = moneyTab:CreateToggle({
+    Name = "Auto Save Money",
+    CurrentValue = false,
+    Flag = "",
+    Callback = function(bool)
+        autoSavemoney = bool
+        while autoSavemoney do task.wait(.5)
+            game:GetService("ReplicatedStorage").REvents.Internal.Save:InvokeServer()
+        end
+    end,
+})
+
+
+
 local Section = teleportTab:CreateSection("[ Teleport Menu ]", false)
 local teleportNpc = {'Brock','Misty','Surge','Erika','Koga','Sabrina','Blaine','GiovanniBoss','Marie','Nicu','Leader Total','Leader Pop'}
 for _, v in next, teleportNpc do
@@ -285,6 +310,3 @@ setmetatable(_G, {__newindex = function(t, i, v)
         end
     end
 end})
-
-
-warn('Infinity Hub Started')
