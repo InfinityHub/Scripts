@@ -126,7 +126,7 @@ local Button = movesTab:CreateButton({
     Interact = 'Click',
     Callback = function()
         local ohInstance1 = game:GetService("Players").LocalPlayer.PokemonParty[getgenv().PokePartSelected]
-        local ohInstance2 = game:GetService("Players").LocalPlayer.PokemonParty.Necrozma.Moves[getgenv().MoveToReplace]
+        local ohInstance2 = game:GetService("Players").LocalPlayer.PokemonParty[getgenv().PokePartSelected].Moves[getgenv().MoveToReplace]
         local ohString3 = getgenv().MoveToAdd
         game:GetService("ReplicatedStorage").REvents.Pokemon.TMLearn:InvokeServer(ohInstance1, ohInstance2, ohString3)
     end,
