@@ -150,30 +150,15 @@ local Toggle = candyTab:CreateToggle({
         end
     end,
 })
-local Toggle = candyTab:CreateToggle({
-    Name = "Collect all candy",
-    CurrentValue = false,
-    Flag = "",
-    Callback = function(bool)
-        autoCandy = bool
-        while autoCandy do task.wait(.5)
-            for _, v in pairs(workspace.Candies:GetChildren()) do
-                if (v:IsA('MeshPart')) then
-                    fireclickdetector(v.ClickDetector)
-                    wait(.5)
-                end
+local Button = candyTab:CreateButton({
+    Name = "Collect all candies",
+    Interact = 'Click',
+    Callback = function()
+        for _, v in pairs(workspace.Candies:GetChildren()) do
+            if (v:IsA('MeshPart')) then
+                fireclickdetector(v.ClickDetector)
+                wait(1)
             end
-        end
-    end,
-})
-local Toggle = candyTab:CreateToggle({
-    Name = "Auto Save",
-    CurrentValue = false,
-    Flag = "",
-    Callback = function(bool)
-        autoSave = bool
-        while autoSave do task.wait(.5)
-            game:GetService("ReplicatedStorage").REvents.Internal.Save:InvokeServer()
         end
     end,
 })
@@ -211,6 +196,17 @@ local Toggle = candyTab:CreateToggle({
     Flag = "",
     Callback = function(bool)
         print(bool)
+    end,
+})
+local Toggle = candyTab:CreateToggle({
+    Name = "Auto Save",
+    CurrentValue = false,
+    Flag = "",
+    Callback = function(bool)
+        autoSave = bool
+        while autoSave do task.wait(.5)
+            game:GetService("ReplicatedStorage").REvents.Internal.Save:InvokeServer()
+        end
     end,
 })
 local Button = candyTab:CreateButton({
