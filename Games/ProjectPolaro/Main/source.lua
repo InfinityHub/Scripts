@@ -160,6 +160,7 @@ local Toggle = candyTab:CreateToggle({
             for _, v in pairs(workspace.Candies:GetChildren()) do
                 if (v:IsA('MeshPart')) then
                     fireclickdetector(v.ClickDetector)
+                    wait(.5)
                 end
             end
         end
@@ -268,7 +269,6 @@ local Toggle = moneyTab:CreateToggle({
         end
     end,
 })
-
 
 
 local Section = teleportTab:CreateSection("[ Teleport Menu ]", false)
