@@ -150,14 +150,18 @@ local Toggle = candyTab:CreateToggle({
         end
     end,
 })
-local Button = candyTab:CreateButton({
+local Toggle = candyTab:CreateToggle({
     Name = "Collect all candies",
-    Interact = 'Click',
-    Callback = function()
-        for _, v in pairs(workspace.Candies:GetChildren()) do
-            if (v:IsA('MeshPart')) then
-                fireclickdetector(v.ClickDetector)
-                wait(1)
+    CurrentValue = false,
+    Flag = "",
+    Callback = function(bool)
+        autoCandies = bool
+        while autoCandies do task.wait(.5)
+            for _, v in pairs(workspace.Candies:GetChildren()) do
+                if (v:IsA('MeshPart') and v.Name == 'candy') then
+                    fireclickdetector(v.ClickDetector)
+                    wait(.5)
+                end
             end
         end
     end,
