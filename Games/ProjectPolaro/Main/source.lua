@@ -156,7 +156,7 @@ local Toggle = candyTab:CreateToggle({
     Flag = "",
     Callback = function(bool)
         autoCandy = bool
-        while autoCandy do task.wait()
+        while autoCandy do task.wait(.5)
             for _, v in pairs(workspace.Candies:GetChildren()) do
                 if (v:IsA('MeshPart')) then
                     fireclickdetector(v.ClickDetector)
