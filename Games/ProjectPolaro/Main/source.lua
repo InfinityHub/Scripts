@@ -23,6 +23,7 @@ function GetOppPokemon()
 		return v
 	end
 end
+local Not = loadstring(game:HttpGet("https://raw.githubusercontent.com/InfinityMercury/Functions/main/Features/Notification.lua",true))()
 local queue_on_teleport = queue_on_teleport or syn and syn.queue_on_teleport
 queue_on_teleport[[
     repeat wait() until game:IsLoaded() print("ServerHoped or rejoined")
@@ -71,12 +72,13 @@ local Window = ArrayField:CreateWindow({
 
 
 -- Tabs Settings
-local welcomeTab = Window:CreateTab("Welcome", 4483362458)
-local movesTab = Window:CreateTab("Moves", 4483362458)
-local candyTab = Window:CreateTab("Candy", 4483362458)
-local battleTab = Window:CreateTab("In Battle", 4483362458)
-local moneyTab = Window:CreateTab("Money", 4483362458)
-local teleportTab = Window:CreateTab("Teleport", 4483362458)
+local welcomeTab      = Window:CreateTab("Welcome", 4483362458)
+local movesTab        = Window:CreateTab("Moves", 4483362458)
+local candyTab        = Window:CreateTab("Candy", 4483362458)
+local battleTab       = Window:CreateTab("In Battle", 4483362458)
+local moneyTab        = Window:CreateTab("Money", 4483362458)
+local wormholeTab     = Window:CreateTab("Wormhole", 4483362458)
+local teleportTab     = Window:CreateTab("Teleport", 4483362458)
 
 
 
@@ -129,6 +131,13 @@ local Button = movesTab:CreateButton({
         local ohInstance2 = game:GetService("Players").LocalPlayer.PokemonParty[getgenv().PokePartSelected].Moves[getgenv().MoveToReplace]
         local ohString3 = getgenv().MoveToAdd
         game:GetService("ReplicatedStorage").REvents.Pokemon.TMLearn:InvokeServer(ohInstance1, ohInstance2, ohString3)
+    end,
+})
+local Button = movesTab:CreateButton({
+    Name = "Save",
+    Interact = 'Click',
+    Callback = function()
+        game:GetService("ReplicatedStorage").REvents.Internal.Save:InvokeServer()
     end,
 })
 
@@ -266,6 +275,40 @@ local Toggle = moneyTab:CreateToggle({
         autoSavemoney = bool
         while autoSavemoney do task.wait(.5)
             game:GetService("ReplicatedStorage").REvents.Internal.Save:InvokeServer()
+        end
+    end,
+})
+
+
+local Section = wormholeTab:CreateSection("[ Wormhole Menu ]", false)
+local Toggle = wormholeTab:CreateToggle({
+    Name = "Teleport to Wormhole",
+    CurrentValue = false,
+    Flag = "",
+    Callback = function(bool)
+        findWorm = bool
+        while findWorm do task.wait()
+            for _, v in pairs(workspace:GetChildren()) do
+                if (v:IsA('Model') and v.Name == 'Wormhole') then
+                    Teleport(v, true, false)
+                end
+            end
+        end
+    end,
+})
+local Button = wormholeTab:CreateButton({
+    Name = "Check Wormhole",
+    Interact = 'Click',
+    Callback = function()
+        local findPart = 'Wormhole'
+        for _, v in pairs(workspace:GetChildren()) do
+            if (v:IsA('Model') and string.find(findPart, v.Name)) then
+                Not:Notify('Wormhole Spawned')
+                return
+            else
+                Not:Notify('Wormhole Not Spawned')
+                return
+            end
         end
     end,
 })
