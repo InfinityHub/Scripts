@@ -1,38 +1,33 @@
--- Library Settings
-local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
-local w = library:CreateWindow("Weird Strict Dad")
-
-
--- Code
-local farm = w:CreateFolder("Farming")
-farm:Toggle("Inf Stamina",function(bool)
+--Lib
+local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/Refinement/main/InfinitiveUI",true))()
+local Win = Lib:CreateWindow("Weird Strict Dad",1,nil,nil)
+local Tab,name = Win:CreateTab("Farming")
+Tab:CreateToggle("Inf Stamina", false, function(bool)
     infStamina = bool
     while infStamina do task.wait()
         game:GetService("Players").LocalPlayer.PlayerGui.Time.Frame.stamina.Value = 250
     end
 end)
-farm:Toggle("Inf Oxygen",function(bool)
+Tab:CreateToggle("Inf Oxygen", false, function(bool)
     infOxygen = bool
     while infOxygen do task.wait()
         game:GetService("Players").LocalPlayer.Oxygen.Value = 100
     end
 end)
-farm:Toggle("Inf Hunger",function(bool)
+Tab:CreateToggle("Inf Hunger", false, function(bool)
     infHunger = bool
     while infHunger do task.wait()
         game:GetService("Players").LocalPlayer.Hunger.Value = 100
     end
 end)
-farm:Slider("WalkSpeed",{min = 16, max = 500, precise = true}, function(value)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+Tab:CreateSlider("WalkSpeed", 16, 500, 16, function(v)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
 end)
-farm:Slider("JumpPower",{min = 16, max = 500, precise = true}, function(value)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+Tab:CreateSlider("JumpPower", 16, 500, 16, function(v)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
 end)
-
-
-local quest = w:CreateFolder("Quest Solo")
-quest:Button("Auto Trashes",function()
+local Tab,name = Win:CreateTab("Quest Solo")
+Tab:CreateButton("Auto Trashes",function()
     for _, v in pairs(workspace:GetDescendants()) do
         if (v:IsA('ProximityPrompt')) then
             v.HoldDuration = 0
@@ -46,7 +41,7 @@ quest:Button("Auto Trashes",function()
         end
     end
 end)
-quest:Button("Auto Noddle",function()
+Tab:CreateButton("Auto Noddle",function()
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 0
     for _, v in pairs(workspace:GetDescendants()) do
         if (v:IsA('ProximityPrompt')) then
@@ -87,7 +82,7 @@ quest:Button("Auto Noddle",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-120.030167, 5.29257011, 28.4466801, 0, 0, -1, 0, 1, 0, 1, 0, 0)
     wait(.2) game.Players.LocalPlayer.Character.Humanoid.WalkSpeed=16
 end)
-quest:Button("Auto Refill",function()
+Tab:CreateButton("Auto Refill",function()
     for _, v in pairs(workspace:GetDescendants()) do
         if (v:IsA('ProximityPrompt')) then
             v.HoldDuration = 0
@@ -112,7 +107,7 @@ quest:Button("Auto Refill",function()
         end
     end
 end)
-quest:Button("Auto Bedroom",function()
+Tab:CreateButton("Auto Bedroom",function()
     for _, v in pairs(workspace:GetDescendants()) do
         if (v:IsA('ProximityPrompt')) then
             v.HoldDuration = 0
@@ -127,7 +122,7 @@ quest:Button("Auto Bedroom",function()
         end
     end
 end)
-quest:Button("Auto Lights",function()
+Tab:CreateButton("Auto lights",function()
     for _, v in pairs(workspace:GetDescendants()) do
         if (v:IsA('ProximityPrompt')) then
             v.HoldDuration = 0
@@ -143,7 +138,7 @@ quest:Button("Auto Lights",function()
         end
     end
 end)
-quest:Button("Auto Tv",function()
+Tab:CreateButton("Auto Tv",function()
     for _, v in pairs(workspace:GetDescendants()) do
         if (v:IsA('ProximityPrompt')) then
             v.HoldDuration = 0
@@ -152,16 +147,14 @@ quest:Button("Auto Tv",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Game.Remote.CFrame wait(.2)
     fireproximityprompt(workspace.Game.Remote.ProximityPrompt)
 end)
-quest:Button("Auto Check Dad",function()
+Tab:CreateButton("Auto Check Dad",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-103.160576, 5.35102463, 40.1684914, 0.00236101169, -4.79200111e-08, -0.999997199, 7.12295645e-08, 1, -4.77519713e-08, 0.999997199, -7.11166237e-08, 0.00236101169) wait(.2)
     fireproximityprompt(workspace.House.Doors.FrontDoor.Door.Door1.ProximityPrompt) wait(.5)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-118, 19, 53) wait(.2)
     fireproximityprompt(workspace.House.Rooms.Bedroom.Computer.Monitor.ProximityPrompt)
 end)
-
-
-local Survival = w:CreateFolder("Survival")
-Survival:Toggle("Auto Sleep",function(bool)
+local Tab,name = Win:CreateTab("Survival")
+Tab:CreateToggle("Auto Sleep", false, function(bool)
     sleep = bool
     while sleep do task.wait()
         for _, v in pairs(workspace.Game.dad:GetChildren()) do
@@ -175,7 +168,7 @@ Survival:Toggle("Auto Sleep",function(bool)
         end
     end
 end)
-Survival:Toggle("Auto Feed",function(bool)
+Tab:CreateToggle("Auto Feed", false, function(bool)
     feed = bool
     while feed do task.wait()
         local hungerValue = game:GetService("Players").LocalPlayer.Hunger.Value
@@ -205,7 +198,7 @@ Survival:Toggle("Auto Feed",function(bool)
         end
     end
 end)
-Survival:Toggle("Esp Dad",function(bool)
+Tab:CreateToggle("Esp Dad", false, function(bool)
     espDad = bool
     if (espDad) then
         local esp = Instance.new('Highlight')
@@ -219,7 +212,7 @@ Survival:Toggle("Esp Dad",function(bool)
         end
     end
 end)
-Survival:Button("Refil generator",function()
+Tab:CreateButton("Refill Generator",function()
     for _, v in pairs(workspace.House.GasCans:GetChildren()) do
         if (v:IsA('Model') and v.Name == 'GasCan') then
             for _, x in pairs(v:GetDescendants()) do
