@@ -120,3 +120,16 @@ local Button = Tab:CreateButton({
       workspace.InfinityMercury0.KillScript.Enabled = false
    end,
 })
+local Button = Tab:CreateButton({
+   Name = "Get All Tools",
+   Interact = 'Click',
+   SectionParent = PlayerSection,
+   Callback = function()
+      for _, v in pairs(game:GetService("ReplicatedStorage").Gear:GetChildren()) do
+         if v:IsA('Tool') then
+            local toolClone = v:Clone()
+            toolClone.Parent = game.Players.LocalPlayer.Backpack
+         end
+      end
+   end,
+})
