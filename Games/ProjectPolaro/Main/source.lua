@@ -302,7 +302,7 @@ local Button = wormholeTab:CreateButton({
     Callback = function()
         local findPart = 'Wormhole'
         for _, v in pairs(workspace:GetChildren()) do
-            if (v:IsA('Model') and string.find(findPart, v.Name)) then
+            if (string.find(findPart, v.Name)) then
                 Not:Notify('Wormhole Spawned')
                 return
             else
