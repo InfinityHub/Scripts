@@ -117,7 +117,7 @@ local Button = Tab:CreateButton({
    Interact = 'Click',
    SectionParent = PlayerSection,
    Callback = function()
-      workspace.InfinityMercury0.KillScript.Enabled = false
+      game.Players.LocalPlayer.Character.KillScript.Enabled = false
    end,
 })
 local Button = Tab:CreateButton({
